@@ -2,26 +2,21 @@
   position: relative;
 }
 
-/* BACK BUTTON */
+/* Back button */
 .back-button {
-  /* position: absolute; */
-  top: 20px;
-  left: 20px;
-
-  background: none;
-  border: none;
-  color: #a7b3c2;
-  font-size: 16px;
-  font-weight: 600;
+  margin: 15px;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 5px;
   cursor: pointer;
-
-  display: flex;
-  align-items: center;
-  gap: 6px;
+  font-weight: bold;
+  transition: all 0.2s;
 }
 
-.back-button:hover {
-  text-decoration: underline;
+.back-btn:hover {
+  background-color: #e0f0ff;
 }
 
 .movie-details-page {
@@ -107,12 +102,13 @@
 .theater-btn {
   padding: 8px 16px;
   background: white;
-  border: 1px solid #1579ff;
   color: #1579ff;
-  border-radius: 6px;
+  border: 1px solid #1579ff;
+  border-radius: 8px;
   font-size: 14px;
   cursor: pointer;
   transition: all 0.2s ease;
+  margin: 5px;
 }
 
 .theater-btn:hover {
@@ -168,11 +164,6 @@
   color: white;
 }
 
-
-/* .book-btn:hover {
-  background-color: #0e5ec0;
-} */
-
 .theater-btn.selected,
 .date-btn.selected,
 .time-btn.selected,
@@ -187,3 +178,67 @@
   pointer-events: none;
 }
 
+.date-btn {
+  width: 70px;
+  height: 70px;
+  border-radius: 10px;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease;
+  margin: 5px;
+  border: 1px solid #1579ff;
+  border-radius: 8px;
+}
+
+.date-btn:hover {
+  border-color: #1e88e5;
+}
+
+.date-btn.selected {
+  background-color: #1e88e5;
+  border-color: #1e88e5;
+}
+
+.date-day {
+  font-size: 12px;
+  color: #777;
+}
+
+.date-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #333;
+}
+
+.date-btn.selected .date-day,
+.date-btn.selected .date-value {
+  color: #fff;
+}
+
+.time-btn {
+  padding: 8px 14px;
+  border-radius: 20px;
+  border: 1px solid #dcdcdc;
+  background-color: #fff;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: #333;
+  margin: 5px;
+  border: 1px solid #1579ff;
+  border-radius: 8px;
+}
+
+.time-btn:hover {
+  border-color: #1e88e5;
+  color: #1e88e5;
+}
+
+.time-btn.selected {
+  background-color: #1e88e5;
+  color: #fff;
+  border-color: #1e88e5;
+}

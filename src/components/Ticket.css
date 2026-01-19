@@ -13,11 +13,12 @@
 .tab {
   padding: 10px 22px;
   border-radius: 6px;
-  border: none;
+  border: 1px solid #007bff;;
   cursor: pointer;
   background: #e9f3ff;
   color: #007bff;
-  font-weight: 500;
+  font-weight: bold;
+  font-size: medium;
 }
 
 .tab.active {
