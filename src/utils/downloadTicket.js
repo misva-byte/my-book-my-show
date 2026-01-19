@@ -15,7 +15,7 @@ export const downloadTicket = ({
 
   // Title
   doc.setFontSize(18);
-  doc.text("🎟 Movie Ticket", 20, 20);
+  doc.text(" Movie Ticket", 20, 20);
 
   doc.setFontSize(12);
   doc.text(`Movie: ${movieName}`, 20, 40);
