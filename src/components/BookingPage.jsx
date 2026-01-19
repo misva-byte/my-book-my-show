@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axiosInstance from "../api/axiosInstance";
 import "./BookingPage.css";
@@ -13,6 +13,8 @@ function BookingPage() {
   const [bookedSeats, setBookedSeats] = useState([]);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const maxSeats = location.state?.seatCount || 10;
 
   useEffect(() => {
     const fetchShow = async () => {
@@ -54,6 +56,10 @@ function BookingPage() {
       if (prev.includes(seatKey)) {
         return prev.filter(s => s !== seatKey);
       } else {
+        if (prev.length >= maxSeats) {
+          alert(`You can only select ${maxSeats} seats.`); // Optional: User feedback
+          return prev; // Return existing state without changes
+        }
         return [...prev, seatKey];
       }
     });
@@ -80,6 +86,10 @@ function BookingPage() {
         <p>{show.screen.theaterName} • Screen {show.screen.screenNumber}</p>
         <p>{new Date(show.startTime).toLocaleString()}</p>
 
+        <div className="seat-limit-info" style={{ color: selectedSeats.length === maxSeats ? 'green' : '#666' }}>
+            Selecting {selectedSeats.length} of {maxSeats} seats
+        </div>
+
         <h2>Select Seats</h2>
 
         {/* SEAT LAYOUT */}
@@ -101,7 +111,7 @@ function BookingPage() {
                         const seatKey = `${section.type}-${seatId}`;
                         const isSelected = selectedSeats.includes(seatKey);
                         const isBooked = bookedSeats.includes(seatKey);
-
+                        const isDisabled = !isSelected && !isBooked && selectedSeats.length >= maxSeats;
                         return (
                           <button
                             key={seatKey}
@@ -109,6 +119,7 @@ function BookingPage() {
                             className={`seat 
                               ${isSelected ? "selected" : ""}
                               ${isBooked ? "booked" : ""}
+                              ${isDisabled ? "limit-reached" : ""}
                               `}
                             onClick={() => toggleSeatSelection(seatId, section.type)}
                           >

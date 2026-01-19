@@ -23,7 +23,8 @@ function TheaterDetails() {
   const [error, setError] = useState("");
 
   const [showSeatPopup, setShowSeatPopup] = useState(false);
-  const [seatCount, setSeatCount] = useState(null);
+  // --- CHANGED: Default to 1 ---
+  const [seatCount, setSeatCount] = useState(1); 
   const [bookingInfo, setBookingInfo] = useState(null);
 
   useEffect(() => {
@@ -92,8 +93,8 @@ function TheaterDetails() {
               time: new Date(show.startTime).toLocaleTimeString([], {
                 hour: "2-digit",
                 minute: "2-digit",
-              })
-          });
+              }),
+            });
           }
         });
       }
@@ -130,109 +131,116 @@ function TheaterDetails() {
     }));
   };
 
+  /* --- NEW HANDLER FUNCTION --- */
+  const handleConfirmBooking = () => {
+    if (bookingInfo && bookingInfo.showId) {
+      navigate(`/booking/${bookingInfo.showId}`, {
+        state: {
+          seatCount: seatCount, // Pass the count here
+          // Add any other info you might need on the booking page
+          theaterName: theater.name, 
+          date: selectedDate
+        },
+      });
+      setShowSeatPopup(false);
+    }
+  };
+
   if (error) return <h2>{error}</h2>;
   if (!theater) return <h2>Loading theater...</h2>;
 
   return (
     <>
-    <AppLayout>
-      <div className={styles["theater-container"]}>
-        {/* Back Button */}
-        <button className={styles["back-btn"]} onClick={() => navigate(-1)}>
-          ← Back
-        </button>
+      <AppLayout>
+        <div className={styles["theater-container"]}>
+          {/* Back Button */}
+          <button className={styles["back-btn"]} onClick={() => navigate(-1)}>
+            ← Back
+          </button>
 
-        {/* Theater Info */}
-        <h1>{theater.name}</h1>
-        <p>{theater.location}</p>
+          {/* Theater Info */}
+          <h1>{theater.name}</h1>
+          <p>{theater.location}</p>
 
-        {/* Date Selection */}
-        <div className={styles["date-selection"]}>
-          {dates.map((date) => (
-            <button
-              key={date.toDateString()}
-              onClick={() => setSelectedDate(date)}
-              className={
-                selectedDate.toDateString() === date.toDateString()
-                  ? `${styles["date-btn"]} ${styles.selected}`
-                  : styles["date-btn"]
-              }
-            >
-              {formatDate(date)}
-            </button>
-          ))}
-        </div>
-
-        {/* Movies */}
-        {loading ? (
-          <p>Loading movies...</p>
-        ) : movies.length === 0 ? (
-          <p>No shows available for this date.</p>
-        ) : (
-          <div className={styles["movies-list"]}>
-            {movies.map((movie, idx) => (
-              <div key={idx} className={styles["movie-card"]}>
-                <div>
-                  <h3>{movie.name}</h3>
-
-                  {movie.languages?.length > 0 && (
-                    <p className={styles["movie-languages"]}>
-                      Languages: {movie.languages.join(", ")}
-                    </p>
-                  )}
-
-                  <div className={styles.showtimes}>
-                    {movie.times.map((show) => (
-                      <button
-                        key={show.showId}
-                        className={
-                          selectedTimes[idx]?.showId === show.showId
-                            ? `${styles.showtime} ${styles["selected-time"]}`
-                            : styles.showtime
-                        }
-                        onClick={() => handleTimeSelect(idx, show)}
-                      >
-                        {show.time}
-                      </button>
-                    ))}
-                  </div>
-                </div>
-
-               <button
-                  className={styles["book-btn"]}
-                  disabled={!selectedTimes[idx]}
-                  onClick={() => {
-                    setBookingInfo({
-                      showId: selectedTimes[idx].showId,
-                    });
-                    setShowSeatPopup(true);
-                  }}
-                >
-                  Book Now
-                </button>
-              
-              </div>
+          {/* Date Selection */}
+          <div className={styles["date-selection"]}>
+            {dates.map((date) => (
+              <button
+                key={date.toDateString()}
+                onClick={() => setSelectedDate(date)}
+                className={
+                  selectedDate.toDateString() === date.toDateString()
+                    ? `${styles["date-btn"]} ${styles.selected}`
+                    : styles["date-btn"]
+                }
+              >
+                {formatDate(date)}
+              </button>
             ))}
           </div>
-        )}
-      </div>
-    </AppLayout>
 
-    {showSeatPopup && (
+          {/* Movies */}
+          {loading ? (
+            <p>Loading movies...</p>
+          ) : movies.length === 0 ? (
+            <p>No shows available for this date.</p>
+          ) : (
+            <div className={styles["movies-list"]}>
+              {movies.map((movie, idx) => (
+                <div key={idx} className={styles["movie-card"]}>
+                  <div>
+                    <h3>{movie.name}</h3>
+
+                    {movie.languages?.length > 0 && (
+                      <p className={styles["movie-languages"]}>
+                        Languages: {movie.languages.join(", ")}
+                      </p>
+                    )}
+
+                    <div className={styles.showtimes}>
+                      {movie.times.map((show) => (
+                        <button
+                          key={show.showId}
+                          className={
+                            selectedTimes[idx]?.showId === show.showId
+                              ? `${styles.showtime} ${styles["selected-time"]}`
+                              : styles.showtime
+                          }
+                          onClick={() => handleTimeSelect(idx, show)}
+                        >
+                          {show.time}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <button
+                    className={styles["book-btn"]}
+                    disabled={!selectedTimes[idx]}
+                    onClick={() => {
+                      setBookingInfo({
+                        showId: selectedTimes[idx].showId,
+                      });
+                      setShowSeatPopup(true);
+                    }}
+                  >
+                    Book Now
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </AppLayout>
+
+      {/* SEAT POPUP */}
       <SeatPopup
         visible={showSeatPopup}
-  selectedSeats={seatCount}
-  setSelectedSeats={setSeatCount}
-  onCancel={() => setShowSeatPopup(false)}
-  onConfirm={() => {
-    navigate(`/booking/${bookingInfo.showId}`, {
-      state: {
-        seats: seatCount,
-      },
-    });
-  }}
+        selectedSeats={seatCount}     // State variable
+        setSelectedSeats={setSeatCount} // Setter
+        onCancel={() => setShowSeatPopup(false)}
+        onConfirm={handleConfirmBooking} // New Handler
       />
-    )}
     </>
   );
 }

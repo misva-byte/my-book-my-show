@@ -18,7 +18,7 @@ function MovieDetails() {
   const [selectedShow, setSelectedShow] = useState(null);
 
   const [showSeatPopup, setShowSeatPopup] = useState(false);
-  const [seatCount, setSeatCount] = useState(null);
+  const [seatCount, setSeatCount] = useState(1);
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
@@ -110,6 +110,25 @@ function MovieDetails() {
       )
     : [];
 
+  
+  /* ---------------- HANDLER FUNCTION ---------------- */
+  
+  const handleConfirmBooking = () => {
+    setShowSeatPopup(false);
+    
+    // Check if a show is selected before navigating (safety check)
+    if (selectedShow) {
+      navigate(`/booking/${selectedShow.id}`, {
+        state: {
+          seatCount: seatCount, // This is the value used by BookingPage.jsx
+          
+          // Optional: Pass other details if needed for display
+          movieName: movie?.name,
+          theaterName: selectedTheater?.name
+        },
+      });
+    }
+  };
 
   /* ---------------- RENDER ---------------- */
 
@@ -232,18 +251,7 @@ function MovieDetails() {
         selectedSeats={seatCount}
         setSelectedSeats={setSeatCount}
         onCancel={() => setShowSeatPopup(false)}
-        onConfirm={() => {
-          setShowSeatPopup(false);
-          navigate(`/booking/${selectedShow.id}`, {
-            state: {
-              movie,
-              theater: selectedTheater,
-              date: selectedShow.startTime,
-              time: selectedShow.startTime,
-              seats: seatCount,
-            },
-          });
-        }}
+        onConfirm={handleConfirmBooking}
       />
     </>
   );
