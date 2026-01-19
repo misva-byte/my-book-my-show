@@ -13,7 +13,7 @@ const Ticket = () => {
       try {
         const token = localStorage.getItem("accessToken");
         const res = await axios.get(
-          "http://ec2-13-201-98-117.ap-south-1.compute.amazonaws.com:3000/orders",
+          "/api/orders",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
