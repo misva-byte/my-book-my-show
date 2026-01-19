@@ -1,0 +1,189 @@
+.movie-details-wrapper {
+  position: relative;
+}
+
+/* BACK BUTTON */
+.back-button {
+  /* position: absolute; */
+  top: 20px;
+  left: 20px;
+
+  background: none;
+  border: none;
+  color: #a7b3c2;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.movie-details-page {
+  display: flex;
+  gap: 40px;
+  padding: 40px;
+}
+
+/* LEFT SIDE */
+/* LEFT SIDE SECTIONS */
+.movie-left {
+  flex: 2;
+  padding-top: 40px;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.section h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1579ff;
+  margin-bottom: 8px;
+}
+
+.section p {
+  font-size: 14px;
+  color: #666;
+}
+
+
+/* RIGHT SIDE */
+.movie-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* CARD */
+.movie-details-card {
+  width: 100%;
+  max-width: 1000px;
+  background: white;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  position: sticky;
+}
+
+.movie-details-card img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 12px;
+}
+
+.movie-info h3 {
+  color: #1579ff;
+  margin-bottom: 8px;
+}
+
+.description {
+  font-size: 14px;
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.movie-meta p {
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+/* THEATER BUTTONS */
+.theater-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.theater-btn {
+  padding: 8px 16px;
+  background: white;
+  border: 1px solid #1579ff;
+  color: #1579ff;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theater-btn:hover {
+  background: #1579ff;
+  color: white;
+}
+
+/* selected theater card */
+.booking-card {
+  width: 100%;
+  max-width: 1000px;
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid #76a9ff;
+  color: #1565c0; /* blue text */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.booking-card h3 {
+  margin: 0 0 10px 0;
+  font-weight: 700;
+  font-size: 1.2rem;
+}
+
+.booking-card p {
+  margin: 5px 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.booking-card .note {
+  font-style: italic;
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #235a9a;
+}
+
+.book-now-btn {
+  margin-top: 15px;
+  padding: 10px 25px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #1a73e8;
+  border: 2px solid #1a73e8;
+  border-radius: 15px;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.book-now-btn:hover {
+  background-color: #1a73e8;
+  color: white;
+}
+
+
+/* .book-btn:hover {
+  background-color: #0e5ec0;
+} */
+
+.theater-btn.selected,
+.date-btn.selected,
+.time-btn.selected,
+.book-now-btn.selected {
+  background-color: #007bff; /* blue */
+  color: white;
+}
+
+/* Blur background */
+.blurred {
+  filter: blur(5px);
+  pointer-events: none;
+}
+

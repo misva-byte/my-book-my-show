@@ -1,0 +1,334 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+}
+
+/* MAIN LAYOUT */
+.login-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  flex: 1;
+  padding: 50px;
+  background: linear-gradient(to bottom right, #b3e5fc, #ffffff);
+  position: relative;
+}
+
+/* LOGO */
+.logo {
+
+
+  width: 150px;
+  height: auto;
+
+}
+
+.ticket {
+  width: 40px;
+  height: 30px;
+  background: #1e88e5;
+  border-radius: 6px;
+  position: relative;
+}
+
+.ticket::before,
+.ticket::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  background: white;
+  border-radius: 50%;
+  position: absolute;
+  top: 12px;
+}
+
+.ticket::before {
+  left: 8px;
+}
+
+.ticket::after {
+  right: 8px;
+}
+
+/* WELCOME TEXT */
+.welcome-text {
+  position: absolute;
+  bottom: 80px;
+}
+
+.welcome-text h1 {
+  font-size: 42px;
+}
+
+.welcome-text p {
+  font-size: 22px;
+  max-width: 400px;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  flex: 1;
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right-panel h2 {
+  margin-bottom: 30px;
+}
+
+label {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+input {
+  padding: 10px;
+  margin-top: 5px;
+  width: 100%;
+}
+
+/* BUTTON */
+.login-btn {
+  margin-top: 25px;
+  padding: 12px;
+  border: 1px solid #1e88e5;
+  background: white;
+  color: #1e88e5;
+  cursor: pointer;
+  font-size: 16px;
+  
+}
+
+.login-btn:hover {
+  background: #1e88e5;
+  color: white;
+}
+
+/* For non-login pages */
+.app-layout {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #b3e5fc, #ffffff);
+}
+
+/* REGISTER */
+.register {
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.register span {
+  color: #1e88e5;
+  cursor: pointer;
+}
+
+.home-container {
+  padding: 40px;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 24px;
+}
+
+.movie-card {
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 10px;
+  text-align: center;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 260px;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.movie-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  /* box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); */
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  display: block;
+}
+
+
+/* Movie title */
+.movie-card h4 {
+  /* padding: 12px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+  color: #333; */
+
+  margin: 10px;
+  text-align: center;
+}
+
+/* hover effect */
+.movie-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 30px rgba(30, 136, 229, 0.25);
+}
+
+.filter-buttons {
+  margin-bottom: 30px;
+}
+
+
+.filter-buttons button:first-child {
+  margin-right: 20px;   /* adds space after the first button only */
+}
+
+
+.filter-buttons button {
+  padding: 8px 22px;
+  border-radius: 5px;
+  border: 1px solid white;
+  background: white;
+  color: #1e88e5;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all;
+}
+
+.filter-buttons button.active {
+  background: #1e88e5;
+  color: white;
+}
+
+.filter-buttons button:hover {
+  background: #aed2f1;
+  color: #1e88e5;
+}
+
+/* NavbarLayout */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 30px;
+  background: #ffffff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-left {
+  flex: 1;
+}
+
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.navbar-center a {
+  text-decoration: none;
+  color: #1e88e5;
+  font-weight: 600;
+}
+
+.navbar-center a.active {
+  border-bottom: 2px solid #1e88e5;
+}
+
+.navbar-right {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.navbar-right button {
+  padding: 6px 16px;
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.theater-card {
+  display: block;
+  width: 100vw;
+  max-width: 100%;
+  box-sizing: border-box;
+  background: linear-gradient(90deg, #f0f7ff 0%, #e6f1ff 100%);
+  border: 1px solid #b1d2ff;
+  border-radius: 12px;
+  padding: 16px 24px;
+  margin: 12px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.theater-card:hover {
+  box-shadow: 0 4px 8px rgba(16, 144, 223, 0.3);
+}
+
+.theater-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.theater-name {
+  font-weight: 700;
+  color: #1579ff; /* strong blue */
+  font-size: 1.1rem;
+  border-bottom: 2px solid #1579ff;
+  padding-bottom: 4px;
+  margin-bottom: 8px;
+}
+
+.theater-location {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  color: #444d5a;
+  line-height: 1.2;
+}
+
+.theater-location svg {
+  width: 16px;
+  height: 16px;
+  margin-right: 8px;
+  fill: #444d5a;
+}
+
+.arrow-icon {
+  width: 20px;
+  height: 20px;
+  fill: #1579ff;
+}
+
+/* MovieDetails */
+

@@ -1,0 +1,103 @@
+/* .overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0,0,0,0.4);
+  z-index: 900;
+} */
+
+.payment-page {
+  width: 600px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  /* border: 1px solid #ddd; */
+  border-radius: 10px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  background-color: #f9f9f9;
+
+   /* CENTER THE CARD OVER THE SCREEN */
+  position: fixed;       /* detach from normal flow */
+  top: 50%;             /* vertical center */
+  left: 50%;            /* horizontal center */
+  transform: translate(-50%, -50%); /* shift by half width/height */
+  z-index: 1000;        /* make sure it’s above everything else */
+
+  /* Optional: add shadow for better modal feel */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.payment-page h1 {
+  margin-bottom: 8px;
+}
+
+.payment-page p {
+  margin-bottom: 16px;
+  color: #555;
+}
+
+/* Movie & show details box */
+.show-details-box {
+  background-color: #e8f0fe;
+  padding: 15px 20px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  width: 100%;
+  text-align: center;
+}
+
+.show-details-box h3 {
+  margin: 0 0 5px 0;
+}
+
+.show-details-box p {
+  margin: 3px 0;
+  color: #333;
+}
+
+.payment-amount-box {
+  /* border: 1px solid #aaa; */
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 10px;
+  background-color: #eaeaea;
+}
+
+.payment-amount-box h2 {
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #707070;
+}
+
+.amount{
+    margin-left: 19rem;
+    color: #2c2b2b;
+}
+
+
+.confirm-pay-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 14px 28px;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.confirm-pay-btn:hover {
+  background-color: #0056b3;
+}
+
+.secure-payment-text {
+  margin-top: 16px;
+  color: #888;
+  font-size: 0.9rem;
+}

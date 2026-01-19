@@ -1,0 +1,246 @@
+/* .theater-container { 
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.date-selection {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.date-btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.date-btn.selected {
+  border: 2px solid #007bff;
+  background-color: #e0f0ff;
+}
+
+.movies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.movie-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  
+  /* Make it transparent initially */
+  /* background-color: transparent;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+} */
+
+/* Hover effect */
+/* .movie-card:hover {
+  background-color: #ffffff; /* White on hover */
+  /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); Slightly stronger shadow */
+/* }  */
+
+
+/* .showtimes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+.showtime {
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  color: #007bff;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.2s;
+}
+
+.showtime:hover {
+    background-color: #e0f0ff;
+}
+
+.selected-time {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.book-btn:disabled{
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.book-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.back-btn {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.back-btn:hover {
+  background-color: #e0f0ff;
+}
+
+.movie-languages {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+.app-layout {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #b3e5fc, #ffffff);
+} */
+
+/* Container for the theater page */
+.theater-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  color: #333;
+}
+
+/* Back button */
+.back-btn {
+  margin-bottom: 15px;
+  padding: 8px 12px;
+  border: 1px solid #007bff;
+  background-color: #fff;
+  color: #007bff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #e0f0ff;
+}
+
+/* Date selection */
+.date-selection {
+  margin: 20px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.date-btn {
+  padding: 10px 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.date-btn.selected {
+  border: 2px solid #007bff;
+  background-color: #e0f0ff;
+}
+
+/* Movies list container */
+.movies-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Movie card styling */
+.movie-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  background-color: transparent; /* transparent by default */
+  transition: all 0.3s ease;
+}
+
+.movie-card:hover {
+  background-color: #fff; /* white on hover */
+}
+
+/* Movie languages */
+.movie-languages {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 5px 0;
+}
+
+/* Showtimes container */
+.showtimes {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 5px;
+}
+
+/* Showtime button */
+.showtime {
+  padding: 5px 10px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  color: #007bff;
+  cursor: pointer;
+  background-color: transparent;
+  transition: all 0.2s;
+}
+
+.showtime:hover {
+  background-color: #e0f0ff;
+}
+
+/* Selected showtime */
+.selected-time {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Book Now button */
+.book-btn {
+  padding: 10px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.book-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Optional: App layout background */
+.app-layout {
+  min-height: 100vh;
+  background: linear-gradient(to bottom right, #b3e5fc, #ffffff);
+  padding-bottom: 40px;
+}
