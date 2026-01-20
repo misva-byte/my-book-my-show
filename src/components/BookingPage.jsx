@@ -82,11 +82,11 @@ function BookingPage() {
         </button>
 
         {/* Movie info */}
-        <h2>{show.movie.name}</h2>
+        <h1>{show.movie.name}</h1>
         <p>{show.screen.theaterName} • Screen {show.screen.screenNumber}</p>
         <p>{new Date(show.startTime).toLocaleString()}</p>
 
-        <div className="seat-limit-info" style={{ color: selectedSeats.length === maxSeats ? 'green' : '#666' }}>
+        <div className="seat-limit-info" style={{ color: selectedSeats.length === maxSeats ? '#6aaae6' : '#666' }}>
             Selecting {selectedSeats.length} of {maxSeats} seats
         </div>
 

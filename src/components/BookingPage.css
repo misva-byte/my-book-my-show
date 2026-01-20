@@ -1,111 +1,202 @@
-/* -------------------- PAGE CONTAINER -------------------- */
+/* --- General Page Layout --- */
 .booking-page {
-  padding: 2rem;
-  max-width: 900px;
+  padding: 20px;
+  padding-bottom: 100px; 
+  max-width: 800px;
   margin: 0 auto;
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  text-align: center;
 }
 
-/* -------------------- BACK BUTTON -------------------- */
+/* --- Header & Movie Info --- */
 .back-btn {
   background: none;
-  border: none;
-  font-size: 16px;
-  font-weight: 600;
+  border-color: 1px solid #007bff;
+  font-weight: bold;
+  color: #007bff;
   cursor: pointer;
-  margin-bottom: 20px;
-  color: #333;
-  transition: color 0.2s ease;
+  position: absolute;
+  left: 20px;
+  top: 90px;
+  padding: 8px 12px;
+  border-radius: 5px;
 }
 
 .back-btn:hover {
-  color: #007bff;
+  background-color: #8cc3f7;
+  color: #eceef0;
+  transition: all 0.4s;
 }
 
-/* -------------------- MOVIE INFO HEADER -------------------- */
-.booking-header {
-  text-align: center;
+.booking-page h1 {
+  margin: 10px 0 5px;
+  color: #000000;
+}
+
+.booking-page p {
+  margin: 5px;
+  color: #666;
+  font-size: 0.95rem;
+}
+
+.seat-limit-info {
+  background-color: #f8f9fa;
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  margin: 25px 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  border: 1px solid #e9ecef;
+}
+
+/* --- Seat Layout Container --- */
+.seat-layout {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: auto; 
+  padding: 10px;
+}
+
+/* --- Sections (VIP, Gold, etc.) --- */
+.seat-section {
+  width: 100%;
   margin-bottom: 30px;
 }
 
-.booking-header h2 {
-  margin-bottom: 8px;
-  font-size: 28px;
+.seat-section h3 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #838383;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 10px;
+  margin-bottom: 15px;
 }
 
-.booking-header p {
-  margin: 2px 0;
-  font-size: 16px;
-  color: #555;
-}
-
-.select-seats {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-/* -------------------- SEAT LAYOUT -------------------- */
-.seat-layout {
-  margin-top: 2rem;
-}
-
-/* SEAT SECTION */
-.seat-section {
-  margin-bottom: 2rem;
-}
-
-.seat-section h4 {
-  margin-bottom: 8px;
-  font-size: 18px;
-  font-weight: 600;
-  color: #333;
-}
-
-/* ROW OF SEATS */
+/* --- Rows --- */
 .seat-row {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  justify-content: center;
+  margin-bottom: 10px;
+  gap: 8px; 
 }
 
-/* ROW LABEL */
 .row-label {
   width: 30px;
   font-weight: bold;
-  margin-right: 8px;
+  color: #888;
+  font-size: 0.9rem;
+  text-align: right;
+  margin-right: 10px;
 }
 
-/* INDIVIDUAL SEAT */
+/* --- Individual Seats --- */
 .seat {
   width: 32px;
   height: 32px;
-  margin: 4px;
-  border: 1px solid #444;
-  background: white;
+  border-radius: 6px;
+  border: 1px solid #2688d8; 
+  background-color: #fff;
+  color: #2688d8;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
-  /* border-radius: 4px;
-  transition: background 0.2s, transform 0.1s; */
+  transition: all 0.2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.seat.selected {
-  background-color: #4caf50;
-  color: white;
-}
-
-.seat:hover {
-  background: #007bff;
+/* Hover Effect for Available Seats */
+.seat:hover:not(:disabled):not(.limit-reached) {
+  background-color: #2688d8;
   color: white;
   transform: scale(1.1);
 }
 
+/* --- Seat States --- */
+
+/* 1. Selected Seat */
+.seat.selected {
+  background-color: #2688d8; 
+  color: white;
+  border-color: #2688d8;
+  box-shadow: 0 2px 5px rgba(45, 163, 209, 0.4);
+}
+
+/* 2. Booked Seat (Sold) */
 .seat.booked {
-  background-color: #ccc;
-  color: #666;
+  background-color: #e0e0e0;
+  border-color: #ccc;
+  color: #aaa;
   cursor: not-allowed;
 }
 
-.seat.booked:hover {
-  background-color: #ccc;
+/* 3. Limit Reached (When max seats selected) */
+.seat.limit-reached {
+  opacity: 0.4;
+  cursor: not-allowed;
+  border-color: #ccc;
+  color: #999;
 }
+
+/* --- Visual Screen Indicator --- */
+/* Adds a curved screen effect at the top of the layout */
+.seat-layout::before {
+  content: "SCREEN THIS WAY";
+  display: block;
+  width: 80%;
+  height: 20px;
+  border-top: 4px solid #ddd;
+  border-radius: 50% 50% 0 0 / 20px 20px 0 0;
+  margin: 0 auto 30px auto;
+  color: #adadad;
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  padding-top: 10px;
+  box-shadow: 0 -10px 15px -10px rgba(0,0,0,0.1);
+}
+
+/* --- Payment Footer (Sticky Bottom) --- */
+.pay-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: white;
+  padding: 15px;
+  box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: center;
+  z-index: 100;
+}
+
+.pay-btn {
+  background-color: #e42b2b; 
+  color: white;
+  border: none;
+  padding: 12px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  max-width: 400px;
+  transition: background-color 0.2s;
+}
+
+.pay-btn:hover:not(:disabled) {
+  background-color: #c91717;
+  transition: all 0.3s;
+}
+
+.pay-btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+

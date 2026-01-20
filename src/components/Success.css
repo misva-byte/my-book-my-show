@@ -33,6 +33,7 @@
 /* Check mark wrapper */
 .check-wrapper {
   margin-bottom: 2rem;
+  justify-content: center;
 }
 
 .check-bg {
@@ -62,6 +63,8 @@
   stroke-width: 3;
   height: 28px;
   width: 28px;
+  justify-content: center;
+  
 }
 
 /* Buttons */
