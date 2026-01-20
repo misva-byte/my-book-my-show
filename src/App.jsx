@@ -11,6 +11,7 @@ import PaymentPage from "./components/PaymentPage";
 import Success from "./components/Success"; 
 import Ticket from "./components/Ticket"; 
 import Cancel from "./components/Cancel";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 
@@ -21,8 +22,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/register" element={<Register />} />
-        
-        <Route element={<NavbarLayout />}>
+        <Route element={ProtectedRoute} >
+          <Route element={<NavbarLayout />}>
             <Route path="/home" element={<Home />} />
             <Route path="/movie/:movieId" element={<MovieDetails />} />
             <Route path="/theater/:theaterId" element={<TheaterDetails />} />
@@ -33,6 +34,7 @@ function App() {
             <Route path="/cancel" element={<Cancel />} />
 
 
+        </Route>
         </Route>
 
 
