@@ -33,10 +33,10 @@ const Ticket = () => {
     const now = new Date();
 
     if (activeTab === "upcoming") {
-      return showTime >= now && order.status !== "COMPLETED";
+      return showTime >= now && order.status === "COMPLETED";
     }
 
-    return showTime < now || order.status === "COMPLETED";
+    return showTime < now || order.status !== "COMPLETED";
   });
 
   // ✅ Group by showtimeId
